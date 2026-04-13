@@ -3,7 +3,7 @@
     echo "Restarting as root"
     exec sudo bash "$(realpath "${BASH_SOURCE[0]}")" # Re-executes the script as root
 }
-systemctl disable ssh --now
+systemctl disable ssh --now # Disables ssh so we can start our own server
 echo "root:root" | chpasswd # Sets the password of root to "root"
 chsh -s /usr/bin/bash # Changes the shell of root to bash
 FILE="$(mktemp)" # Generate a randomly named file to store config for sshd
